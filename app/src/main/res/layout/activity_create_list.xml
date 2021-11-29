@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_and_edit_todo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".CreateListActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/save_note"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_save"
+            tools:layout_editor_absoluteX="351dp"
+            tools:layout_editor_absoluteY="11dp" />
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back_arrow"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_alignParentStart="true"
+            android:padding="4dp"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="20dp" />
+        <EditText
+            android:id="@+id/task_title"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginHorizontal="12dp"
+            android:background="@null"
+            android:hint="Task Title"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:includeFontPadding="false"
+            android:inputType="text"
+            android:textColor="#DDDDDD"
+            android:textColorHint="#a1a1a1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_below="@id/back_img" />
+
+
+
+        <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false" android:layout_below="@id/task_title"
+        android:layout_marginBottom="40dp"
+        android:paddingBottom="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="26dp"
+                    android:id="@+id/add_alarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="When?"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp"
+                    android:drawableLeft="@drawable/ic_alarm"
+                    android:drawablePadding="3dp"
+                    android:paddingLeft="8dp"
+                    android:paddingHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/rounded_bg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/timestamp"
+                />
+                <TextView
+                    android:id="@+id/timestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:includeFontPadding="false"
+                    android:textColor="#a1a1a1"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@+id/tasks_recycler"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_alarm" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tasks_recycler"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="Enter Note"
+                    android:importantForAutofill="no"
+                    android:includeFontPadding="false"
+                    android:minHeight="48dp"
+                    android:textColor="#DDDDDD"
+                    android:textColorHint="#a1a1a1"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toTopOf="@+id/add_task_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/timestamp" />
+
+                <LinearLayout
+                    android:id="@+id/add_task_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tasks_recycler">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/actual_todo_task"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8.5"
+                            android:background="@drawable/edittext_bg"
+                            android:hint="I want to ..."
+                            android:paddingHorizontal="6dp"
+                            android:textColorHint="#a1a1a1"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/add_item"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_weight="1.5"
+                            android:src="@drawable/ic_new" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
